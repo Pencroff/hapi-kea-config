@@ -1,9 +1,9 @@
 hapi-kea-config
 ===============
 
-kea-config as plugin for [hapi](//hapijs.com/).
+kea-config as plugin for [hapi](hapijs.com).
 
-More details about [kea-config](//github.com/Pencroff/kea-config)
+More details about [kea-config](github.com/Pencroff/kea-config)
 
 ## Installation
 
@@ -38,7 +38,15 @@ if (configManager.has('web')) {
 
 ## Plugin Options
 
-### `confPath`
+#### `confPath`
 
 `{string}` - path to folder with configuration files. Optional parameter.
+
+## Testing
+
+ * `npm test` run tests
+
+## Licens
+
+MIT
 
