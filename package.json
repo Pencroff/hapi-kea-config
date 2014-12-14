@@ -1,0 +1,36 @@
+{
+  "name": "hapi-kea-config",
+  "version": "0.0.1",
+  "description": "kea-config as plugin for hapi",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --bail --ui bdd --reporter spec -- test/*-test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Pencroff/hapi-kea-config.git"
+  },
+  "keywords": [
+    "hapi",
+    "conf",
+    "config",
+    "configuration"
+  ],
+  "author": "Pencroff",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Pencroff/hapi-kea-config/issues"
+  },
+  "homepage": "https://github.com/Pencroff/hapi-kea-config",
+  "dependencies": {
+    "kea-config": "^0.1.3"
+  },
+  "devDependencies": {
+    "chai": "~1.10.0",
+    "hapi": "~8.0.0",
+    "mocha": "~2.0.1"
+  },
+  "engines": {
+    "node": "~0.10.33"
+  }
+}
