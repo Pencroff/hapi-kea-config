@@ -1,9 +1,9 @@
 hapi-kea-config
 ===============
 
-kea-config as plugin for [hapi](//hapijs.com).
+kea-config as plugin for [hapi](http://hapijs.com).
 
-More details about [kea-config](../kea-config)
+More details about [kea-config](/../../../kea-config)
 
 ## Installation
 
