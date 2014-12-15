@@ -1,6 +1,6 @@
 {
   "name": "hapi-kea-config",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "kea-config as plugin for hapi",
   "main": "index.js",
   "scripts": {
