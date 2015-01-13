@@ -1,7 +1,7 @@
 {
   "name": "hapi-kea-config",
   "version": "0.1.2",
-  "description": "kea-config as plugin for hapi",
+  "description": "Configuration manager for hapi support merging configurations base on Node.js environment, references to other keys and using templates with objects for complex string values",
   "main": "index.js",
   "scripts": {
     "test": "mocha --bail --ui bdd --reporter spec -- test/*-test.js"
@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/Pencroff/hapi-kea-config",
   "dependencies": {
-    "kea-config": "^0.1.3"
+    "kea-config": "^0.1.6"
   },
   "devDependencies": {
     "chai": "~1.10.0",

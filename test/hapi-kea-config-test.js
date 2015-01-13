@@ -44,5 +44,21 @@ describe('Hapi Config', function () {
         expect(server.plugins['hapi-kea-config'].get('web.port')).to.equal(4343);
         done();
     });
+    it('should support server decoration by configManager', function (done) {
+        var testPath = path.join(root, './testConfigFiles'),
+            options = {
+                confPath: testPath,
+                decorateServer: true
+            };
+        server.register({
+                register: hapiConfig,
+                options: options
+            }, function (err) { if (err) { done(err); } }
+        );
+        expect(server.configManager).to.be.exist();
+        expect(server.configManager.has('web')).to.equal(true);
+        expect(server.configManager.get('web.port')).to.equal(4343);
+        done();
+    });
 
 });
