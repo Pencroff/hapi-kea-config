@@ -80,7 +80,8 @@ To install this plugin on your Hapi server, do something similar to this:
     var server = new Hapi.Server();
 
     var pluginOptions = {
-        confPath: './path-to-config-flies'
+        confPath: './path-to-config-flies',
+        decorateServer: true
     };
 
     server.register({ // for hapi >= 8.0.0 or use server.pack.register for hapi < 8.0.0
@@ -96,6 +97,9 @@ To install this plugin on your Hapi server, do something similar to this:
     if (configManager.has('web')) {
         var port = configManager.get('web.port');
     }
+    // if decorateServer === true
+    server.configManager.has('web.port'); // true
+
 ```
 
 ## Plugin Options
