@@ -2,7 +2,9 @@ hapi-kea-config
 ===============
 
 Configuration manager for [hapi](http://hapijs.com) framework. It based on [kea-config](https://github.com/Pencroff/kea-config) manager. 
-Main feature of this configuration manager is merging configuration files depending on Node.js environment.
+Main feature of this configuration manager is merging configuration files depending on Node.js environment,
+support references to other keys and using templates with objects for complex string values.
+It has perfect performance, fully tested (100% covered by tests).
 
 ####Quick example
 
@@ -24,18 +26,32 @@ configManager.get('web.port'); // 3005
 #####File ./config/main.conf.js
 
 ```js
-var config = {}
-
-config.web = {
-    port: 3005,
-    sessionKey: '6ketaq3cgo315rk9',
-    paging: {
-        defaultPageSize: 25,
-        numberVisiblePages: 10
-    }
-};
-
-module.exports = config;
+    var config = {}
+    
+    config.web = {
+        port: 3005,
+        sessionKey: '6ketaq3cgo315rk9',
+        paging: {
+            defaultPageSize: 25,
+            numberVisiblePages: 10
+        },
+        mongoDb: {
+            username: 'dbUser',
+            password: 'strongPassword',
+            host: 'localhost',
+            port: 27101,
+            db: 'database'
+        },
+        propertyReference: {
+            $ref: 'web.paging.defaultPageSize'
+        },
+        templateReference: {
+            $ref: 'web.mongoDb',
+            $tmpl: 'mongodb://{username}:{password}@{host}:{port}/{db}'
+        }
+    };
+    
+    module.exports = config;
 ```
 
 #####File ./config/development.conf.js
@@ -90,6 +106,13 @@ var configManager = server.plugins['hapi-kea-config'];
 if (configManager.has('web')) {
     var port = configManager.get('web.port');
 }
+// Usage references
+
+configManager.get('web.propertyReference'); // 25
+
+// Usage templates
+
+configManager.get('web.templateReference'); // 'mongodb://dbUser:strongPassword@localhost:27101/database' - string
 ```
 
 ## Plugin Options

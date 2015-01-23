@@ -23,11 +23,11 @@
   },
   "homepage": "https://github.com/Pencroff/hapi-kea-config",
   "dependencies": {
-    "kea-config": "^0.1.3"
+    "kea-config": "^0.2.0"
   },
   "devDependencies": {
     "chai": "~1.10.0",
-    "hapi": "~8.0.0",
+    "hapi": "~8.1.0",
     "mocha": "~2.0.1"
   },
   "engines": {
