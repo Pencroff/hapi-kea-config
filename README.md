@@ -11,7 +11,6 @@ It has perfect performance, fully tested (100% covered by tests).
 #####Initialization and usage
 
 ```js
-
     configManager.setup('./config');
     // For process.env.NODE_ENV === 'development';
     configManager.get('web.port'); // 4343
@@ -27,7 +26,6 @@ It has perfect performance, fully tested (100% covered by tests).
 #####File ./config/main.conf.js
 
 ```js
-
     var config = {}
     
     config.web = {
@@ -59,7 +57,6 @@ It has perfect performance, fully tested (100% covered by tests).
 #####File ./config/development.conf.js
 
 ```js
-
     var config = {}
 
     config.web = {
@@ -71,7 +68,6 @@ It has perfect performance, fully tested (100% covered by tests).
 #####File ./config/production.conf.js
 
 ```js
-
     var config = {}
 
     config.web = {
@@ -115,13 +111,14 @@ To install this plugin on your Hapi server, do something similar to this:
     // if decorateServer === true
     server.configManager.has('web.port'); // true
 
-// Usage references
-
-configManager.get('web.propertyReference'); // 25
-
-// Usage templates
-
-configManager.get('web.templateReference'); // 'mongodb://dbUser:strongPassword@localhost:27101/database' - string
+    // Usage references
+    
+    configManager.get('web.propertyReference'); // 25
+    
+    // Usage templates
+    
+    configManager.get('web.templateReference'); // 'mongodb://dbUser:strongPassword@localhost:27101/database' - string
+    
 ```
 
 ## Plugin Options
@@ -129,6 +126,10 @@ configManager.get('web.templateReference'); // 'mongodb://dbUser:strongPassword@
 #### `confPath`
 
 `{string}` - path to folder with configuration files. Optional parameter.
+
+#### `decorateServer`
+
+`{boolean}` - should plugin decorate server object by configuration manager.
 
 ## Testing
 
