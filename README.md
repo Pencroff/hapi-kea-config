@@ -11,21 +11,23 @@ It has perfect performance, fully tested (100% covered by tests).
 #####Initialization and usage
 
 ```js
-configManager.setup('./config');
-// For process.env.NODE_ENV === 'development';
-configManager.get('web.port'); // 4343
-// For process.env.NODE_ENV === 'production';
-configManager.get('web.port'); // 7474
 
-// If you don't want to apply changes connected to environment
-// just use init method
-configManager.init('./config/main.conf.js');
-configManager.get('web.port'); // 3005
+    configManager.setup('./config');
+    // For process.env.NODE_ENV === 'development';
+    configManager.get('web.port'); // 4343
+    // For process.env.NODE_ENV === 'production';
+    configManager.get('web.port'); // 7474
+
+    // If you don't want to apply changes connected to environment
+    // just use init method
+    configManager.init('./config/main.conf.js');
+    configManager.get('web.port'); // 3005
 ```
 
 #####File ./config/main.conf.js
 
 ```js
+
     var config = {}
     
     config.web = {
@@ -57,24 +59,26 @@ configManager.get('web.port'); // 3005
 #####File ./config/development.conf.js
 
 ```js
-var config = {}
 
-config.web = {
-    port: 4343
-};
+    var config = {}
 
-module.exports = config;
+    config.web = {
+        port: 4343
+    };
+
+    module.exports = config;
 ``` 
 #####File ./config/production.conf.js
 
 ```js
-var config = {}
 
-config.web = {
-    port: 7474
-};
+    var config = {}
 
-module.exports = config;
+    config.web = {
+        port: 7474
+    };
+
+    module.exports = config;
 ``` 
 
 ## Installation
@@ -86,26 +90,31 @@ module.exports = config;
 To install this plugin on your Hapi server, do something similar to this:
 
 ```js
-var Hapi = require('hapi');
-var server = new Hapi.Server();
 
-var pluginOptions = {
-    confPath: './path-to-config-flies'
-};
+    var Hapi = require('hapi');
+    var server = new Hapi.Server();
 
-server.register({ // for hapi >= 8.0.0 or use server.pack.register for hapi < 8.0.0
-    plugin: require('hapi-kea-config'),
-    options: pluginOptions }, function(err) {
-	if (err) {
-		console.log('error', 'Failed loading plugin: hapi-kea-config');
-	}
-});
+    var pluginOptions = {
+        confPath: './path-to-config-flies',
+        decorateServer: true
+    };
 
-// Usage in the code
-var configManager = server.plugins['hapi-kea-config'];
-if (configManager.has('web')) {
-    var port = configManager.get('web.port');
-}
+    server.register({ // for hapi >= 8.0.0 or use server.pack.register for hapi < 8.0.0
+        plugin: require('hapi-kea-config'),
+        options: pluginOptions }, function(err) {
+        if (err) {
+            console.log('error', 'Failed loading plugin: hapi-kea-config');
+        }
+    });
+
+    // Usage in the code
+    var configManager = server.plugins['hapi-kea-config'];
+    if (configManager.has('web')) {
+        var port = configManager.get('web.port');
+    }
+    // if decorateServer === true
+    server.configManager.has('web.port'); // true
+
 // Usage references
 
 configManager.get('web.propertyReference'); // 25
