@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/Pencroff/hapi-kea-config",
   "dependencies": {
-    "kea-config": "^0.2.0"
+    "kea-config": "^0.2.2"
   },
   "devDependencies": {
     "chai": "~1.10.0",
